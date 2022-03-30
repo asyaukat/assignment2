@@ -19,16 +19,26 @@ public class StudentController {
 	public void showMenu() throws SQLException{
 		int option = 0;
 		
-		while(option != 3) {
+		while(option != 99) { //Exit
 			option = view.menu();
 			
 			if (option == 1) {
 				
-				view.readData(model.readStudents());
+				view.readDataMultiple(model.readStudents());
 			}
 			else if (option == 2) {
 				view.saveData();
 				model.insertStudent(view.getStudent());
+				
+			}
+			else if (option == 3) {
+				
+				try {
+					view.readDataSingle(model.readStudentSingle(view.insertStudentID()));
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					view.noStudent();
+				}
 				
 			}
 		}

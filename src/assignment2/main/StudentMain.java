@@ -11,11 +11,11 @@ public class StudentMain {
 		StudentController controller;
 		StudentView view;
 		DB model;
-		
+
 		view = new StudentView();
 		model = new DB();
-		controller = new StudentController(view,model);
-		
+		controller = new StudentController(view, model);
+
 		controller.showMenu();
 	}
 }

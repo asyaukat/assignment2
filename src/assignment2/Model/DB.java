@@ -13,7 +13,7 @@ public class DB {
 	public DB() {
 		try {
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db1?" +
-				    	                                   "user=root&password=abcd1234");
+				    	                                   "user=root&password=abcd1234&serverTimezone=UTC");
 			 conn.setAutoCommit(false);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -53,5 +53,27 @@ public class DB {
 		}
 		
 		return studs;
+	}
+	
+	public Student readStudentSingle(int studentID) throws Exception {
+		String sql = "SELECT * FROM db1.studentmark where studentID = ?";
+		PreparedStatement ps = getDB().prepareStatement(sql);
+		ps.setInt(1,studentID);
+		ResultSet rs = ps.executeQuery();
+		
+		Student stud = new Student();
+		
+		if(rs.next()) {
+			stud.setID(rs.getInt(1));
+			stud.setName(rs.getString(2));
+			stud.setMathmark(rs.getInt(3));
+			stud.setSciencemark(rs.getInt(4));
+			return stud;
+		}
+		
+		else {
+			throw new Exception();
+		}
+
 	}
 }

@@ -16,11 +16,12 @@ public class StudentView {
 	public int menu() {
 		System.out.println("\n1. Read data from database");
 		System.out.println("2. Add data to database");
-		System.out.println("3. Exit");
+		System.out.println("3. Read data with student ID");
+		System.out.println("99. Exit");
 		return sc.nextInt();
 
 	}
-	public void readData(ArrayList<Student> studs) {
+	public void readDataMultiple(ArrayList<Student> studs) {
 		System.out.println("ID\tName\tMath\tScience");
 		for(Student s: studs) {
 			System.out.print(s.getID() + "\t");
@@ -28,6 +29,23 @@ public class StudentView {
 			System.out.print(s.getMathmark()+ "\t");
 			System.out.println(s.getSciencemark()+ "\t");
 		}
+	}
+	
+	public int insertStudentID() {
+		System.out.println("Insert studentID");
+		return sc.nextInt();
+	}
+	
+	public void noStudent() {
+		System.out.println("There is no student with that ID");
+	}
+	
+	public void readDataSingle(Student s) {
+		System.out.println("ID\tName\tMath\tScience");
+		System.out.print(s.getID() + "\t");
+		System.out.print(s.getName()+ "\t");
+		System.out.print(s.getMathmark()+ "\t");
+		System.out.println(s.getSciencemark()+ "\t");
 	}
 	
 	
